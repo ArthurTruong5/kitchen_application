@@ -4,6 +4,16 @@ require 'progress_bar'
 require 'io/console'
 system ('clear') or system ('cls')
 
+def bar
+
+  bar = ProgressBar.new(100, :percentage)
+
+100.times do
+  sleep 0.01
+  bar.increment!
+  end
+end
+
 def testing
 
 puts "Hi, Welcome To The Kitchen Application"
@@ -100,7 +110,7 @@ end
 
 # - - - - - - - - - - - - - - - - - - - -
 def added
-    puts Rainbow("Meal Has Been Added, Add More If You Like . . .").white
+    puts Rainbow(" Meal Has Been Added").white
 end
 
   FOOD = { :pho => 0, :ban_xiao => 0, :vietnamese_spring_rolls => 0, :pork_roll => 0 }
@@ -114,6 +124,7 @@ def welcome
   exit_menu = true
   while exit_menu
   puts Rainbow("Please Enter The Food Number").white
+  sleep(0.5)
   puts Rainbow("Press E To Exit Application").bg(:brown)
   sleep(0.5)
   print "Add Item Number: "
@@ -127,7 +138,8 @@ def welcome
     sum += 10 * quantity
     puts "Ordered #{FOOD[:pho]} Pho's for Total of #{sum1}"
     # total[:pho1] += 10
-
+    sleep(0.5)
+    bar
     sleep(0.5)
     added
   elsif item == "2" || item == "Ban xiao"
@@ -141,6 +153,8 @@ def welcome
     # total[:ban_xiao1] += 12
     # FOOD[:ban_xiao] += 1
     sleep(0.5)
+    bar
+    sleep(0.5)
     added
   elsif item == "3" || item == "Vietnamese spring rolls"
     sum1 = 0
@@ -152,6 +166,8 @@ def welcome
     puts "Ordered #{FOOD[:vietnamese_spring_rolls]} Spring Rolls for Total of #{sum1}"
     # total[:vietnamese_spring_rolls1] += 14
     # FOOD[:vietnamese_spring_rolls] += 1
+    sleep(0.5)
+    bar
     sleep(0.5)
     added
   elsif item == "4" || item == "Pork roll"
@@ -165,8 +181,10 @@ def welcome
     # total[:pork_roll1] += 52
     # FOOD[:pork_roll] += 1
     sleep(0.5)
+    bar
+    sleep(0.5)
     added
-  elsif item == "B"
+  elsif item == "E"
     system ('clear') or system ('cls')
     exit_menu = false
   elsif item == "P"
