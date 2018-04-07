@@ -4,6 +4,8 @@ require 'progress_bar'
 require 'io/console'
 system ('clear') or system ('cls')
 
+
+
 def bar
 
   bar = ProgressBar.new(100, :percentage)
@@ -33,6 +35,7 @@ puts "Please Enter Your Last Name"
 
 puts Rainbow("Please Enter Your New Password
 Password Will Be Invisble").cyan
+print '> '
 @password = STDIN.noecho(&:gets).chomp
 
 @full_name << [@first_name, @last_name]
@@ -45,6 +48,7 @@ sleep(0.5)
 exit_menu = true
 while exit_menu
 puts Rainbow("We Need To Verify Your Password Again").bg(:red)
+print '> '
 if STDIN.noecho(&:gets).chomp == @password
   puts "Loading . . ."
   bar = ProgressBar.new(100, :percentage)
